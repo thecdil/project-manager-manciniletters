@@ -5,3 +5,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
 {%- endif -%}
+
+<script>
+    $( "textarea" ).change(function() {
+      $( this ).closest("form").addClass( "d-print-block" ).removeClass("d-print-none");
+      $( this ).closest(".card").addClass( "d-print-block" ).removeClass("d-print-none");
+      var form_id = $( this ).closest("form").attr('id');
+      console.log(form_id);
+      $("#value-" + form_id ).text(this).val();
+    });
+    </script>

@@ -1,12 +1,12 @@
 # blank-dev-template
 # basic bootstrap template
 
-title: blank-dev-template
+title: Digital Project Management 
 
 # url is your gh-pages base, following the pattern: username.github.io
 url: https://uidaholib.github.io
 # baseurl is your github repository's name prefixed with a /
-baseurl: /blank-dev-template
+baseurl: /digital-project-management
 
 # Use Bootstrap (true, false)
 bootstrap: true
@@ -15,4 +15,4 @@ bootstrap-js: true
 # Use JQuery Core
 jquery: true
 # Use fontawesome CDN (true, false)
-fontawesome: false
+fontawesome: true
