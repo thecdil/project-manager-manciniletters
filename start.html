@@ -4,10 +4,15 @@ layout: default
 ---
 
 {%- assign sections = site.data.starter_questions %}
+<table class="d-none dataTable">
+  <th>id</th><th>text</th>
+</table>
 <div class="container">
         <h1 class="mb-3">{{page.title}}</h1>
         <p>Participants in the agreement should fill this out together. Click the print button to see your progress. Only those elements and sections you've begun filling out will appear.</p>
-        <p class="centered"><a class="btn btn-light border centered mt-2 d-print-none" onclick="window.print();">Print <i class='fas fa-print'></i> / PDF <i class='fas fa-file-pdf'></i> </a></p>
+        <p class="centered"><a class="btn btn-light border centered mt-2 d-print-none" onclick="window.print();">Print <i class='fas fa-print'></i> / PDF <i class='fas fa-file-pdf'></i> </a>
+          <button id="export">export</button>
+        </p>
         <div class="accordion" id="accordionSections">
 {% for section in sections.all %}
 <div class="card d-print-none">
@@ -21,7 +26,7 @@ layout: default
           <div id="collapse{{forloop.index}}" class="collapse" aria-labelledby="heading{{forloop.index}}" data-parent="#accordionSections">
             <div class="card-body">
 {%for sub in section.subsections %}
-<form id="form{{section.title | truncatewords: 1,''}}{{forloop.index}}" class="d-print-none">
+<form id="form{{section.title | truncatewords: 1,''}}{{forloop.index}}" class="d-print-none dataForm">
 <h3>{{sub.title}}</h3>
 <ul>
     {%for prompt in sub.prompts %}
@@ -58,4 +63,6 @@ id,text
             textarea{border:none; font-size:20px}
           }
 </style>
+
+
 
