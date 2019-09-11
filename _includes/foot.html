@@ -7,6 +7,17 @@
 {%- endif -%}
 
 <script>
+  $( "textarea" ).change(function() {
+    $( this ).closest("form").addClass( "d-print-block" ).removeClass("d-print-none");
+    $( this ).closest(".card").addClass( "d-print-block" ).removeClass("d-print-none");
+    var form_id = $( this ).closest("form").attr('id');
+    console.log(form_id);
+    $("span#value-" + form_id ).html(this).val();
+  });
+  </script>
+
+
+<script>
 $('#export').click(function() {
   var titles = [];
   var form_id = []

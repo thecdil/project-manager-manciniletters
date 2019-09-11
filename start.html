@@ -46,9 +46,10 @@ layout: default
 </div>
 
 <div class="">
-<pre>
-id,text
-{% for section in sections.all %}{%for sub in section.subsections %}<span id="{{section.title | truncatewords: 1,''}}{{forloop.index}}">{{section.title | truncatewords: 1,''}}{{forloop.index}}</span>,"<span id="value-{{section.title | truncatewords: 1,''}}{{forloop.index}}"></span>"
+<table>
+  <tr>
+<th>id</th><th>text</th>
+{% for section in sections.all %}{%for sub in section.subsections %}<tr><td><span id="{{sub.section | truncatewords: 1,''}}{{forloop.index}}">{{sub.title}}</span></td><td><span id="value-form{{section.title | truncatewords: 1,''}}{{forloop.index}}"></span></td></tr>
 {%endfor%}{%endfor%}
 </pre>
     
