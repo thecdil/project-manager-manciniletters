@@ -11,8 +11,10 @@
     $( this ).closest("form").addClass( "d-print-block" ).removeClass("d-print-none");
     $( this ).closest(".card").addClass( "d-print-block" ).removeClass("d-print-none");
     var form_id = $( this ).closest("form").attr('id');
-    console.log(form_id);
-    $("span#value-" + form_id ).html(this).val();
+    var cell_id = "value-" + form_id;
+    var textarea_value = this.value;
+    console.log(cell_id);
+    document.getElementById(cell_id).innerHTML = this.value;
   });
   </script>
 
@@ -20,7 +22,6 @@
 <script>
 $('#export').click(function() {
   var titles = [];
-  var form_id = []
   var data = [];
 
   /*
@@ -30,17 +31,12 @@ $('#export').click(function() {
   $('.dataTable th').each(function() {
     titles.push($(this).text());
   });
- /*
-   * Get the actual data, this will contain all the data, in 1 array
-   */
-   $('form').each(function() {
-    form_id.push($(this).attr('id'));
-  });
+
   /*
    * Get the actual data, this will contain all the data, in 1 array
    */
-  $('.dataForm textarea').each(function() {
-    data.push($(this).val());
+  $('.dataTable td').each(function() {
+    data.push($(this).text());
   });
   
   /*
@@ -56,7 +52,7 @@ $('#export').click(function() {
   var blob = new Blob(["\ufeff", CSVString]);
   var url = URL.createObjectURL(blob);
   downloadLink.href = url;
-  downloadLink.download = "data.csv";
+  downloadLink.download = "starter_answers.csv";
 
   /*
    * Actually download CSV

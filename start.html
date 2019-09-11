@@ -4,9 +4,8 @@ layout: default
 ---
 
 {%- assign sections = site.data.starter_questions %}
-<table class="d-none dataTable">
-  <th>id</th><th>text</th>
-</table>
+{%- assign answers = site.data.starter_answers %}
+
 <div class="container">
         <h1 class="mb-3">{{page.title}}</h1>
         <p>Participants in the agreement should fill this out together. Click the print button to see your progress. Only those elements and sections you've begun filling out will appear.</p>
@@ -23,7 +22,7 @@ layout: default
             </h2>
           </div>
       
-          <div id="collapse{{forloop.index}}" class="collapse" aria-labelledby="heading{{forloop.index}}" data-parent="#accordionSections">
+          <div id="collapse{{forloop.index}}" class="collapse {%if forloop.first%}show{%endif%}" aria-labelledby="heading{{forloop.index}}" data-parent="#accordionSections">
             <div class="card-body">
 {%for sub in section.subsections %}
 <form id="form{{section.title | truncatewords: 1,''}}{{forloop.index}}" class="d-print-none dataForm">
@@ -34,7 +33,7 @@ layout: default
     {%endfor%}
 </ul>
 
-    <textarea name="message" style="height:50px" class="col-12 col-sm-8 "></textarea>
+    <textarea name="message" style="height:50px" class="col-12 col-sm-8 ">{%for answer in answers %}{% if answer.text and answer.section == sub.title%}{{answer.text}}{%endif%}{%endfor%}</textarea>
     <hr/>
 </form>
 
@@ -46,12 +45,13 @@ layout: default
 </div>
 
 <div class="">
-<table>
+<table class="dataTable">
   <tr>
-<th>id</th><th>text</th>
-{% for section in sections.all %}{%for sub in section.subsections %}<tr><td><span id="{{sub.section | truncatewords: 1,''}}{{forloop.index}}">{{sub.title}}</span></td><td><span id="value-form{{section.title | truncatewords: 1,''}}{{forloop.index}}"></span></td></tr>
+      <th>num</th><th>section</th><th>text</th>
+{% for section in sections.all %}{%for sub in section.subsections %}<tr><td>{{forloop.index}}</td><td><span id="{{sub.section | truncatewords: 1,''}}{{forloop.index}}">{{sub.title}}</span></td><td><span id="value-form{{section.title | truncatewords: 1,''}}{{forloop.index}}"></span></td></tr>
 {%endfor%}{%endfor%}
 </pre>
+{%for answer in answers%}{%if answer.text and answer.id == sub.title %}{{answer.text}}{%endif%}{%endfor%}
     
 
 </div>
