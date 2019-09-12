@@ -16,6 +16,11 @@
     console.log(cell_id);
     document.getElementById(cell_id).innerHTML = '"' + $(this).val().replace(/\r\n|\r|\n/g," | ") + '"';
   });
+  $( document ).ready(function() {
+    if ($( "textarea" ).val() !== ""){
+      $( "textarea" ).change();
+    }
+});
   </script>
 
 
