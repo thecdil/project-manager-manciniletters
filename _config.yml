@@ -1,6 +1,9 @@
 # blank-dev-template
 # basic bootstrap template
-title: Letters of Marie Mancini 
+title: Lib-STATIC Project Management Kit Template 
+# Time span determines layouts on a variety of displays. If unsure, extend further into the past and future than you think necessary, use yyyy-mm-dd
+time-start: 2019-09-01
+time-end: 2020-08-31
 # url is your gh-pages base, following the pattern: username.github.io
 url: https://uidaholib.github.io
 # baseurl is your github repository's name prefixed with a /
@@ -13,13 +16,3 @@ bootstrap-js: true
 jquery: true
 # Use fontawesome CDN (true, false)
 fontawesome: true
-collections:
-  posts:
-    permalink: "/meetings/:title/"
-    output: true
-defaults:
-- scope:
-    path: _posts
-    type: posts
-  values:
-    layout: meetings

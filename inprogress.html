@@ -7,7 +7,6 @@ permalink: agreement/inprogress.html
 {%- assign sections = site.data.starter_questions %}
 {%- assign answers = site.data.starter_answers %}
 
-<div class="container">
         <h1 class="mb-3">{{page.title}}</h1>
         <p>Participants in the agreement should fill this out together. Click the print button to see your progress. Only those elements and sections you've begun filling out will appear.</p>
         <p class="centered"><a class="btn btn-light border centered mt-2 d-print-none" onclick="window.print();">Print <i class='fas fa-print'></i> / PDF <i class='fas fa-file-pdf'></i> </a>
@@ -43,16 +42,18 @@ permalink: agreement/inprogress.html
 </div>
 </div>
 {%endfor%}
-</div>
+        </div>
+
 
 <div class="">
 
         <table class="dataTable">
           <tr>
               <th>num</th><th>section</th><th>subsection</th><th>text</th>
+            </tr>
         {% for section in sections.all %}{%for sub in section.subsections %}<tr><td>{{forloop.index}}</td><td>{{section.title}}</td><td>{{sub.title}}</td><td><span id="value-form{{section.title | truncatewords: 1,''}}{{forloop.index}}"></span></td></tr>
         {%endfor%}{%endfor%}
-        </pre>
+        </table>
       
             
         
