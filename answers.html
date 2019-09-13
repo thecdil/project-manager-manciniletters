@@ -5,7 +5,7 @@ type: step
 ---
 
 {%- assign sections = site.data.starter_questions %}
-
+{%- assign answers = site.data.starter_answers %}
 
 <div class="container">
         <h1 class="mb-3">{{page.title}}</h1>
@@ -15,7 +15,8 @@ type: step
         </p>
         <div class="accordion" id="accordionSections">
 {% for section in sections.all %}
-<div class="card d-print-none">
+
+<div class="card ">
         <div class="card-header" id="heading{{forloop.index}}">
           <h2 class="mb-0">
             <a class="" role="button" data-toggle="collapse" data-target="#collapse{{forloop.index}}" aria-expanded="true" aria-controls="collapse{{forloop.index}}" href="#{{section.title | truncatewords: 1,''}}">
@@ -23,21 +24,22 @@ type: step
             </h2>
           </div>
       
-          <div id="collapse{{forloop.index}}" class="collapse {%if forloop.first%}show{%endif%}" aria-labelledby="heading{{forloop.index}}" data-parent="#accordionSections">
+          <div id="collapse{{forloop.index}}" class="collapse" aria-labelledby="heading{{forloop.index}}" data-parent="#accordionSections">
             <div class="card-body">
 {%for sub in section.subsections %}
-<form id="form{{section.title | truncatewords: 1,''}}{{forloop.index}}" class="d-print-none dataForm">
+{%for answer in answers %}{% if answer.text and answer.subsection == sub.title%}
+<form id="form{{section.title | truncatewords: 1,''}}{{forloop.index}}" class="dataForm">
 <h3>{{sub.title}}</h3>
-<ul>
+<ul style="font-size:12px;">
     {%for prompt in sub.prompts %}
     <li>{{prompt.text}}</li>
     {%endfor%}
 </ul>
 
-    <textarea name="message" style="min-height:150px" class="col-12 col-sm-8 ">{%for answer in answers %}{% if answer.text and answer.section == sub.title%}{{answer.text | replace: " | ", "&#013"}}{%endif%}{%endfor%}</textarea>
+    <p class="h5">{{answer.text | replace: " | ", "<br/>"}}</p>
     <hr/>
 </form>
-
+{%endif%}{%endfor%}
 {%endfor%}
 </div>
 </div>
@@ -45,26 +47,7 @@ type: step
 {%endfor%}
 </div>
 
-<div class="">
-<table class="dataTable">
-  <tr>
-      <th>num</th><th>section</th><th>text</th>
-{% for section in sections.all %}{%for sub in section.subsections %}<tr><td>{{sub.section | truncatewords: 1,''}}{{forloop.index}}</td><td>{{sub.title}}</td><td><span id="value-form{{section.title | truncatewords: 1,''}}{{forloop.index}}"></span></td></tr>
-{%endfor%}{%endfor%}
-</pre>
-{%for answer in answers%}{%if answer.text and answer.id == sub.title %}{{answer.text}}{%endif%}{%endfor%}
-    
 
-</div>
-
-<style>
-        @media print {
-            #accordionSections .collapse:not(.show) {
-              display: unset;
-            }
-            textarea{border:none; font-size:20px}
-          }
-</style>
 
 
 
