@@ -1,13 +1,10 @@
 # blank-dev-template
 # basic bootstrap template
-
 title: Letters of Marie Mancini 
-
 # url is your gh-pages base, following the pattern: username.github.io
 url: https://uidaholib.github.io
 # baseurl is your github repository's name prefixed with a /
 baseurl: /digital-project-management
-
 # Use Bootstrap (true, false)
 bootstrap: true
 # Use optional Bootstrap JS (true, false)
@@ -16,3 +13,13 @@ bootstrap-js: true
 jquery: true
 # Use fontawesome CDN (true, false)
 fontawesome: true
+collections:
+  posts:
+    permalink: "/meetings/:title/"
+    output: true
+defaults:
+- scope:
+    path: _posts
+    type: posts
+  values:
+    layout: meetings

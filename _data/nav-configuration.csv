@@ -1,6 +1,7 @@
-title,stub
-Start,start.html
-In Progress,inprogress.html
-Answers,answers.html
+title,stub,type
+Project Agreement,,dropdown parent
+Start,agreement/start.html,dropdown item
+In Progress,agreement/inprogress.html,dropdown item
+Answers,agreement/answers.html,dropdown item
 Timeline,timeline.html
-Meeting Minutes,/minutes/
+Meeting Minutes,/meetings/

@@ -13,13 +13,14 @@
     var form_id = $( this ).closest("form").attr('id');
     var cell_id = "value-" + form_id;
     var textarea_value = this.value;
-    console.log(cell_id);
+    console.log(textarea_value);
     document.getElementById(cell_id).innerHTML = '"' + $(this).val().replace(/\r\n|\r|\n/g," | ") + '"';
   });
   $( document ).ready(function() {
-    if ($( "textarea" ).val() !== ""){
-      $( "textarea" ).change();
-    }
+    $( "textarea" ).each(function() {
+    if ($.trim($(this).val()).length !== 0){
+      $(this).change();
+    }})
 });
   </script>
 

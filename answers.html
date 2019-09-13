@@ -1,7 +1,7 @@
 ---
 title: Digital Project Agreement Starter 
 layout: default
-type: step
+permalink: agreement/answers.html
 ---
 
 {%- assign sections = site.data.starter_questions %}
@@ -19,12 +19,12 @@ type: step
 <div class="card ">
         <div class="card-header" id="heading{{forloop.index}}">
           <h2 class="mb-0">
-            <a class="" role="button" data-toggle="collapse" data-target="#collapse{{forloop.index}}" aria-expanded="true" aria-controls="collapse{{forloop.index}}" href="#{{section.title | truncatewords: 1,''}}">
-              {{section.title}} </a>
+           
+              {{section.title}}
             </h2>
           </div>
       
-          <div id="collapse{{forloop.index}}" class="collapse" aria-labelledby="heading{{forloop.index}}" data-parent="#accordionSections">
+          <div id="collapse{{forloop.index}}" class="" aria-labelledby="heading{{forloop.index}}" data-parent="#accordionSections">
             <div class="card-body">
 {%for sub in section.subsections %}
 {%for answer in answers %}{% if answer.text and answer.subsection == sub.title%}

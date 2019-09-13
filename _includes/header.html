@@ -5,16 +5,29 @@
         </button>
     
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+           
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item {% if page.url == '/'' %}active{% endif %}">
                     <a class="nav-link" href="{{ '/' | absolute_url }}">Home</a>
                 </li>
-                {% for page in site.data.nav-configuration %}
-          
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ page.stub | relative_url }}">{{page.title}}</a>
+{%assign drops = site.data.nav-configuration | where: "type", "dropdown item" %}
+                {% for nav in site.data.nav-configuration %}
+          {%if nav.type == "dropdown parent"%}
+          <li class="nav-item dropdown {% if page.url contains 'agreement' %}active{% endif %}">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{nav.title}}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {%for drop in drops%}
+                  <a class="dropdown-item" href="{{ drop.stub | relative_url }}">{{drop.title}}</a>
+                  {%endfor%}
+                </div>
+              </li>
+          {%elsif nav.type != "dropdown item"%}
+                <li class="nav-item {% if page.url == nav.stub %}active{% endif %}">
+                    <a class="nav-link" href="{{ nav.stub | relative_url }}">{{nav.title}}</a>
                 </li>
-            
+                {%endif%}
                 {%endfor%}
             </ul>
         </div>
