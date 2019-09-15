@@ -3,9 +3,9 @@ layout: default
 ---
 {% assign events = site.data.timeline | sort: "date"  %}
 {% assign filters = events| map: "type" | uniq %}
-{%for filter in filters%}
-<button role="button" class="filter btn btn-sm btn-primary" data-filter="{{filter}}">{{filter}}</button>
-{%endfor%} 
+<p class="text-light">Filter by: {%for filter in filters%}
+<button role="button" class="filter btn btn-sm btn-primary" data-filter="{{filter}}">{{filter | capitalize}}</button>
+{%endfor%} </p>
     
     <h2 class="text-white text-center my-4">Project Start - {{site.project-start |date: "%a, %b %d, %y" }}</h2>
     <div class="timeline">

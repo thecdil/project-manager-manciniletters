@@ -47,14 +47,15 @@ layout: default
 </div>
 <div class="card-body text-center">
 {%capture agreement_test%}
-{%for answer in site.data.answers%}{{answer.text}}{%endfor%}
+{%for answer in site.data.starter_answers%}{{answer.text}}{%endfor%}
 {%endcapture%}
-{% if agreement_test.length < 20 %}
-<a class="btn btn-lg btn-secondary my-2" href="{{'agreement/start.html' | relative_url}}">Start Agreement</a>
+{% if agreement_test.size <= 20 %}
+<a class="btn btn-lg btn-success my-2" href="{{'agreement/start.html' | relative_url}}">Start Agreement</a>
 {%elsif site.agreement-final == true%}
-<a class="btn btn-lg btn-success my-2" href="{{'agreement/final.html' | relative_url}}">View Finalized Agreement</a>
+<a class="btn btn-lg btn-primary my-2" href="{{'agreement/final.html' | relative_url}}">View Finalized Agreement</a>
 
 {%else%}
+
     <a class="btn btn-lg btn-warning my-2" href="{{'agreement/inprogress.html' | relative_url}}">Continue Agreement</a>
 <br/>
 <a href="{{'agreement/final.html' | relative_url}}">Print Version</a>
@@ -66,8 +67,9 @@ layout: default
 <div class="card mt-2">
     <div class="card-header">
     <h2>People</h2></div>
-    <div class="card-body">
-    {%for person in site.data.people%}
+    <div class="card-body text-center">
+            {% assign people = site.data.people | sort: "name" %}
+    {%for person in people%}
     <img class="col-3 rounded-circle" src='{{person.image}}' />
     <p><a href="{{person.link}}">{{person.name}}</a> | <a href="{{person.email}}"><i class="fas fa-envelope"></i></a>
     </p>

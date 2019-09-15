@@ -15,6 +15,13 @@
             $(this).change();
           }})
       });
+
+      $( document ).ready(function() {
+          $( ".card" ).each(function() {
+          if ($(this).find('.row').length == 0){
+            $(this).hide();
+          }})
+      });
         </script>
       
       
