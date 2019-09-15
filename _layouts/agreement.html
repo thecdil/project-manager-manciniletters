@@ -1,12 +1,11 @@
 ---
-title: Digital Project Agreement Starter 
 layout: default
-permalink: agreement/start.html
 ---
 
 {%- assign sections = site.data.starter_questions %}
+{%unless page.path contains "start"%}{%- assign answers = site.data.starter_answers %}{%endunless%}
 
-       <h1 class="mb-3">{{page.title}}</h1>
+        <h1 class="mb-3">{{page.title}}</h1>
         <p>Participants in the agreement should fill this out together. Click the print button to see your progress. Only those elements and sections you've begun filling out will appear.</p>
         <p class="centered"><a class="btn btn-light border centered mt-2 d-print-none" onclick="window.print();">Print <i class='fas fa-print'></i> / PDF <i class='fas fa-file-pdf'></i> </a>
           <button id="export">export</button>
@@ -32,7 +31,7 @@ permalink: agreement/start.html
     {%endfor%}
 </ul>
 
-    <textarea name="message" style="min-height:150px" class="col-12 col-sm-8 "></textarea>
+    <textarea name="message" style="min-height:150px" class="col-12 col-sm-8 ">{%for answer in answers %}{% if answer.text and answer.subsection == sub.title%}{{answer.text | replace: " | ", "&#013"}}{%endif%}{%endfor%}</textarea>
     <hr/>
 </form>
 
@@ -41,13 +40,6 @@ permalink: agreement/start.html
 </div>
 </div>
 {%endfor%}
-</div>
+        </div>
 
-{% include data-table.html %}
-    
-
-
-
-
-
-
+        {% include data-table.html %}
