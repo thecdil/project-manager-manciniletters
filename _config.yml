@@ -9,7 +9,7 @@ project-end: 2020-08-31
 
 ## this part refers to the service agreement the site prompts you to fill out. 
 # when the agreement is finalized [agreement-final: true], means for editing it disappear from the site
-agreement-final: # when agreement finalized, write "true"; otherwise leave blank
+agreement-final: true # when agreement finalized, write "true"; otherwise leave blank
 # List parties to the agreement by adding " - [party_name]"
 agreement-parties:
  - Sarah Nelson
